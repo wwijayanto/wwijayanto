@@ -456,6 +456,7 @@ nav svg{
   }
   #sidebar-active:checked ~ .links-container{
     left: 0;
+    display: none;
   }
   #sidebar-active:checked ~ #overlay{
     height: 100%;
