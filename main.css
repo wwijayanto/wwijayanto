@@ -96,6 +96,7 @@ GAP
 
 .logo {
   width: 12.4rem;
+  margin-right: 25rem;
 }
 
 .logo svg{
@@ -106,7 +107,7 @@ GAP
   display: none;
   font-family: var(--main-font-family-medium);
   font-size: 16px;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.5px;;
 }
 
 .nav-item a{
@@ -143,15 +144,22 @@ GAP
   line-height: 1.8rem;
 }
 
-.mobile-toggle {
+.links-container{
+  height: 100%;
+  width: 100%;
   display: flex;
-  font-size: 3.6rem;
-  color: var(--light-clr);
-  cursor: pointer;
+  flex-direction: row;
+  align-items: center;
 }
 
-.btn-close {
-  display: none !important;
+nav svg{
+  fill: var(--light-clr);
+}
+#sidebar-active{
+  display: none;
+}
+.open-sidebar-button, .close-sidebar-button{
+  display: none;
 }
 
 .row {
@@ -409,6 +417,55 @@ GAP
 }
 
 /* --- Responsive Breaking Point */
+
+@media(max-width: 1023px){
+  .links-container{
+    flex-direction: column;
+    align-items: flex-start;
+
+    position: fixed;
+    top: 0;
+    left: -100%;
+    z-index: 10;
+    width: 300px;
+
+    background-color: var(--dark-clr);
+    box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
+    transition: 0.75s ease-out;
+  }
+  .nav-list{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+  }
+
+  nav a {
+    color: white;
+    list-style: none;
+
+    box-sizing: border-box;
+    height: auto;
+    width: 100%;
+    padding: 20px 30px;
+    justify-content: flex-start;
+  }
+
+  .open-sidebar-button, .close-sidebar-button{
+    padding: 20px;
+    display: block;
+  }
+  #sidebar-active:checked ~ .links-container{
+    left: 0;
+  }
+  #sidebar-active:checked ~ #overlay{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+  }
+}
 
 @media screen and (min-width: 768px) {
   :root {
